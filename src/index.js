@@ -6,6 +6,9 @@ const server = new ApolloServer({
       id: ID
       name: String
       age: Int
+      average: Float
+      boo: Boolean!
+      arrayString: [String]
     }
   `,
   resolvers: {
@@ -13,6 +16,9 @@ const server = new ApolloServer({
       id: () => 1,
       name: () => 'Murilo',
       age: () => 30,
+      average: () => 50.55,
+      boo: () => true,
+      arrayString: () => ['A', 'B'],
     },
   },
 });

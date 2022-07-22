@@ -1,26 +1,11 @@
-import { ApolloServer, gql } from 'apollo-server';
+import { ApolloServer } from 'apollo-server';
+import { context } from './graphql/context';
+import { resolvers, typeDefs } from './graphql/schema';
 
 const server = new ApolloServer({
-  typeDefs: gql`
-    type Query {
-      id: ID
-      name: String
-      age: Int
-      average: Float
-      boo: Boolean!
-      arrayString: [String]
-    }
-  `,
-  resolvers: {
-    Query: {
-      id: () => 1,
-      name: () => 'Murilo',
-      age: () => 30,
-      average: () => 50.55,
-      boo: () => true,
-      arrayString: () => ['A', 'B'],
-    },
-  },
+  typeDefs,
+  resolvers,
+  context: context,
 });
 
 server.listen(4007).then(({ url }) => {

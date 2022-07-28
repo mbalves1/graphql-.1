@@ -5,7 +5,7 @@ import { resolvers, typeDefs } from './graphql/schema';
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: context,
+  context,
 });
 
 server.listen(4007).then(({ url }) => {

@@ -11,3 +11,27 @@ query getUsers {
     userName
   }
 }
+
+query getPost {
+  post (id: "7833") {
+    __typename
+
+    ... on Post {
+      id
+      title
+    }
+
+    ... on PostError {
+      statusCode
+      message
+
+      ... on PostNotFoundError {
+        postId
+      }
+
+      ... on PostTimeoutError {
+        timeout
+      }
+    }
+  }
+}
